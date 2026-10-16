@@ -7,9 +7,7 @@ import {
     Award, 
     ShieldCheck, 
     Zap, 
-    Cpu, 
-    ArrowRight,
-    Download
+    Cpu
 } from 'lucide-vue-next';
 
 const props = defineProps({
@@ -20,10 +18,10 @@ const props = defineProps({
 });
 
 const defaultStats = [
-    { label: 'Years Experience', value: '2+', icon: Zap, color: 'text-amber-500 bg-amber-500/10' },
-    { label: 'Completed Projects', value: '15+', icon: Award, color: 'text-indigo-500 bg-indigo-500/10' },
-    { label: 'Tech Stacks', value: '12+', icon: Cpu, color: 'text-cyan-500 bg-cyan-500/10' },
-    { label: 'Code Quality', value: '100%', icon: ShieldCheck, color: 'text-emerald-500 bg-emerald-500/10' },
+    { label: 'Years Experience', value: '2+', icon: Zap, iconBg: 'bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200' },
+    { label: 'Completed Projects', value: '15+', icon: Award, iconBg: 'bg-zinc-100 dark:bg-zinc-800 text-indigo-600 dark:text-indigo-400' },
+    { label: 'Tech Stacks', value: '12+', icon: Cpu, iconBg: 'bg-zinc-100 dark:bg-zinc-800 text-blue-600 dark:text-blue-400' },
+    { label: 'Code Quality', value: '100%', icon: ShieldCheck, iconBg: 'bg-zinc-100 dark:bg-zinc-800 text-emerald-600 dark:text-emerald-400' },
 ];
 
 const highlights = [
@@ -43,82 +41,81 @@ const highlights = [
 </script>
 
 <template>
-    <section id="about" class="py-24 relative overflow-hidden bg-slate-100/50 dark:bg-slate-900/40 border-y border-slate-200/80 dark:border-slate-800/80">
-        <!-- Background Accents -->
+    <section id="about" class="py-24 relative bg-zinc-50 dark:bg-zinc-900/50 border-y border-zinc-200 dark:border-zinc-800/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-mono font-semibold uppercase tracking-wider">
-                    <User class="w-3.5 h-3.5" />
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 text-xs font-mono font-semibold uppercase tracking-wider">
+                    <User class="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
                     <span>About Me</span>
                 </div>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
                     Bridging Clean Backend Architecture with Intuitive Frontend Design
                 </h2>
-                <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                <p class="font-sans text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     Passionate developer dedicated to engineering reliable digital solutions and seamless user experiences.
                 </p>
             </div>
 
             <!-- Content Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 
                 <!-- Left: Biography and Philosophy -->
                 <div class="lg:col-span-7 space-y-6">
-                    <div class="p-8 rounded-3xl bg-white dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
-                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-                            <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+                    <div class="p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm space-y-6">
+                        <h3 class="font-heading text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white flex items-center gap-2.5">
+                            <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
                             <span>Engineering Web Solutions That Deliver Real Value</span>
                         </h3>
 
-                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        <p class="font-sans text-zinc-600 dark:text-zinc-300 leading-relaxed">
                             {{ profile.about_bio_1 || "I'm Ikbal, a dedicated Full Stack Developer based in Indonesia. I specialize in engineering clean, performant, and maintainable web applications that bridge intuitive design with rock-solid server architecture." }}
                         </p>
 
-                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        <p class="font-sans text-zinc-600 dark:text-zinc-300 leading-relaxed">
                             {{ profile.about_bio_2 || "With a strong foundation in modern PHP (Laravel), Vue 3 Composition API, Inertia.js, and relational database design, I enjoy tackling complex challenges from database optimization to smooth micro-interactions." }}
                         </p>
 
                         <!-- Key Information Pills -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-slate-200 dark:border-slate-800/80">
-                            <div class="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300">
-                                <div class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-slate-800 text-indigo-500 flex items-center justify-center shrink-0">
-                                    <MapPin class="w-4 h-4" />
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                            <div class="flex items-center gap-3 text-sm text-zinc-700 dark:text-zinc-300">
+                                <div class="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center shrink-0">
+                                    <MapPin class="w-4 h-4 text-indigo-500" />
                                 </div>
                                 <div>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 block font-mono">Location</span>
-                                    <span class="font-semibold">{{ profile.location || 'Indonesia' }}</span>
+                                    <span class="text-[11px] text-zinc-400 block font-mono">Location</span>
+                                    <span class="font-semibold font-sans">{{ profile.location || 'Indonesia' }}</span>
                                 </div>
                             </div>
 
-                            <div class="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300">
-                                <div class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-slate-800 text-indigo-500 flex items-center justify-center shrink-0">
-                                    <GraduationCap class="w-4 h-4" />
+                            <div class="flex items-center gap-3 text-sm text-zinc-700 dark:text-zinc-300">
+                                <div class="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center shrink-0">
+                                    <GraduationCap class="w-4 h-4 text-indigo-500" />
                                 </div>
                                 <div>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 block font-mono">Education</span>
-                                    <span class="font-semibold">Informatics Engineering</span>
+                                    <span class="text-[11px] text-zinc-400 block font-mono">Education</span>
+                                    <span class="font-semibold font-sans">Informatics Engineering</span>
                                 </div>
                             </div>
 
-                            <div class="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300">
-                                <div class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-slate-800 text-indigo-500 flex items-center justify-center shrink-0">
-                                    <Mail class="w-4 h-4" />
+                            <div class="flex items-center gap-3 text-sm text-zinc-700 dark:text-zinc-300">
+                                <div class="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center shrink-0">
+                                    <Mail class="w-4 h-4 text-indigo-500" />
                                 </div>
                                 <div>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 block font-mono">Direct Email</span>
-                                    <span class="font-semibold">{{ profile.email || 'ikbal@email.com' }}</span>
+                                    <span class="text-[11px] text-zinc-400 block font-mono">Direct Email</span>
+                                    <span class="font-semibold font-sans">{{ profile.email || 'ikbal@email.com' }}</span>
                                 </div>
                             </div>
 
-                            <div class="flex items-center gap-3 text-sm text-slate-700 dark:text-slate-300">
-                                <div class="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-500 flex items-center justify-center shrink-0">
-                                    <ShieldCheck class="w-4 h-4" />
+                            <div class="flex items-center gap-3 text-sm text-zinc-700 dark:text-zinc-300">
+                                <div class="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center shrink-0">
+                                    <ShieldCheck class="w-4 h-4 text-emerald-500" />
                                 </div>
                                 <div>
-                                    <span class="text-xs text-slate-500 dark:text-slate-400 block font-mono">Work Status</span>
-                                    <span class="font-semibold text-emerald-600 dark:text-emerald-400">Available</span>
+                                    <span class="text-[11px] text-zinc-400 block font-mono">Work Status</span>
+                                    <span class="font-semibold text-emerald-600 dark:text-emerald-400 font-sans">Available</span>
                                 </div>
                             </div>
                         </div>
@@ -129,10 +126,10 @@ const highlights = [
                         <div 
                             v-for="(h, idx) in highlights" 
                             :key="idx" 
-                            class="p-5 rounded-2xl bg-white dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800/80 shadow-md hover:border-indigo-500/40 transition-colors"
+                            class="p-5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm"
                         >
-                            <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1.5">{{ h.title }}</h4>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{{ h.desc }}</p>
+                            <h4 class="font-heading font-bold text-zinc-900 dark:text-white text-sm mb-1.5">{{ h.title }}</h4>
+                            <p class="font-sans text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">{{ h.desc }}</p>
                         </div>
                     </div>
                 </div>
@@ -144,38 +141,35 @@ const highlights = [
                         <div 
                             v-for="(stat, idx) in defaultStats" 
                             :key="idx"
-                            class="p-6 rounded-3xl bg-white dark:bg-[#0B0F17] border border-slate-200 dark:border-slate-800 shadow-xl group hover:border-indigo-500/50 hover:shadow-indigo-500/10 transition-all duration-300"
+                            class="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm"
                         >
-                            <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110 duration-300" :class="stat.color">
-                                <component :is="stat.icon" class="w-6 h-6" />
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" :class="stat.iconBg">
+                                <component :is="stat.icon" class="w-5 h-5" />
                             </div>
-                            <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight group-hover:text-indigo-500 transition-colors">
+                            <p class="font-heading text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
                                 {{ stat.value }}
                             </p>
-                            <p class="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider font-mono">
+                            <p class="font-mono text-xs font-medium text-zinc-400 mt-1 uppercase tracking-wider">
                                 {{ stat.label }}
                             </p>
                         </div>
                     </div>
 
                     <!-- Tech Stack Showcase Graphic -->
-                    <div class="relative rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 p-6 shadow-2xl group">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-indigo-900/40 via-purple-900/20 to-cyan-900/30"></div>
-                        <div class="relative z-10 space-y-4 text-white">
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-mono uppercase tracking-wider text-indigo-400">Tech Stack Overview</span>
-                                <span class="px-2 py-0.5 rounded text-[10px] bg-indigo-500/20 border border-indigo-500/30 text-indigo-300">Modern Stack</span>
-                            </div>
-                            <img 
-                                src="/images/tech-stack.png" 
-                                alt="Ikbal Tech Stack Ecosystem" 
-                                class="w-full h-auto rounded-xl border border-white/10 group-hover:scale-[1.02] transition-transform duration-500 object-contain max-h-48"
-                                onerror="this.style.display='none'"
-                            />
-                            <p class="text-xs text-slate-300">
-                                Integrated tooling and frameworks for crafting scalable full-stack applications.
-                            </p>
+                    <div class="rounded-2xl bg-zinc-900 border border-zinc-800 p-6 shadow-sm space-y-4 text-white">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono uppercase tracking-wider text-zinc-400">Tech Stack Overview</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-800 text-zinc-300 border border-zinc-700">Modern Architecture</span>
                         </div>
+                        <img 
+                            src="/images/tech-stack.png" 
+                            alt="Ikbal Tech Stack Ecosystem" 
+                            class="w-full h-auto rounded-xl border border-zinc-800 object-contain max-h-48"
+                            onerror="this.style.display='none'"
+                        />
+                        <p class="font-sans text-xs text-zinc-400">
+                            Integrated frameworks and database technologies used for enterprise-grade web applications.
+                        </p>
                     </div>
 
                 </div>

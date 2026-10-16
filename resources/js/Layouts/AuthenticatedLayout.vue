@@ -32,14 +32,12 @@ const showingNavigationDropdown = ref(false);
                     
                     <div class="flex items-center gap-6">
                         <!-- Brand -->
-                        <Link :href="route('dashboard')" class="flex items-center gap-2.5 font-bold tracking-tight">
-                            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-500 p-[1px]">
-                                <div class="w-full h-full bg-slate-900 rounded-[11px] flex items-center justify-center text-white">
-                                    <Terminal class="w-4 h-4 text-indigo-400" />
-                                </div>
+                        <Link :href="route('dashboard')" class="flex items-center gap-2.5 tracking-tight">
+                            <div class="w-8 h-8 rounded-lg bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 flex items-center justify-center">
+                                <Terminal class="w-4 h-4 text-white dark:text-zinc-900" />
                             </div>
-                            <span class="font-extrabold text-slate-900 dark:text-white text-base">
-                                Admin<span class="text-indigo-500">Panel</span>
+                            <span class="font-heading font-extrabold text-zinc-900 dark:text-white text-base">
+                                Admin<span class="text-indigo-600 dark:text-indigo-400">Panel</span>
                             </span>
                         </Link>
 

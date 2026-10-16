@@ -34,11 +34,8 @@ const props = defineProps({
 <template>
     <Head :title="profile.name ? `${profile.name} - ${profile.role || 'Full Stack Developer'}` : 'Ikbal Muhammad - Portfolio'" />
 
-    <div class="min-h-screen bg-slate-50 dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 selection:bg-indigo-500 selection:text-white relative">
+    <div class="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 selection:bg-indigo-600 selection:text-white relative font-sans">
         
-        <!-- Subtle Grid Pattern in Dark Mode -->
-        <div class="fixed inset-0 pointer-events-none -z-20 opacity-30 dark:opacity-20 [background-image:radial-gradient(#6366f1_1px,transparent_1px)] [background-size:32px_32px]"></div>
-
         <!-- Sticky Header Navigation -->
         <Navbar 
             :can-login="canLogin" 

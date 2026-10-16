@@ -14,7 +14,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['"Plus Jakarta Sans"', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                heading: ['Syne', ...defaultTheme.fontFamily.sans],
                 mono: ['"JetBrains Mono"', ...defaultTheme.fontFamily.mono],
             },
         },

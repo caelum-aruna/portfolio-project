@@ -134,7 +134,7 @@ const deleteSkill = (skill) => {
                                     <div class="flex items-center gap-3 max-w-xs">
                                         <div class="flex-1 h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
                                             <div 
-                                                class="h-full rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500"
+                                                class="h-full rounded-full bg-indigo-600 dark:bg-indigo-500"
                                                 :style="{ width: `${s.proficiency}%` }"
                                             ></div>
                                         </div>
