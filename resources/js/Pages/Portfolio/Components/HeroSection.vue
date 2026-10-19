@@ -5,9 +5,7 @@ import {
     Download, 
     Sparkles, 
     Check, 
-    Copy, 
-    Code2, 
-    Briefcase
+    Copy 
 } from 'lucide-vue-next';
 
 const props = defineProps({
@@ -167,28 +165,6 @@ const copyEmail = () => {
                                     <Sparkles class="w-3.5 h-3.5 text-amber-400" />
                                     <span class="font-medium font-sans">Laravel & Vue 3 Architect</span>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Floating Badge 1: Tech Stack Badge (Top Right) -->
-                        <div class="absolute -top-4 -right-2 sm:-right-4 px-3.5 py-2 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 shadow-md flex items-center gap-2.5">
-                            <div class="w-7 h-7 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-mono font-bold text-xs">
-                                <Code2 class="w-4 h-4" />
-                            </div>
-                            <div>
-                                <p class="text-[10px] uppercase font-mono tracking-wider text-zinc-400">Stack</p>
-                                <p class="text-xs font-bold text-zinc-900 dark:text-white font-sans">Laravel + Inertia</p>
-                            </div>
-                        </div>
-
-                        <!-- Floating Badge 2: Experience / Projects (Bottom Left) -->
-                        <div class="absolute -bottom-4 -left-2 sm:-left-4 px-3.5 py-2 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 shadow-md flex items-center gap-2.5">
-                            <div class="w-7 h-7 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-                                <Briefcase class="w-4 h-4" />
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-zinc-900 dark:text-white font-sans">15+ Completed</p>
-                                <p class="text-[10px] text-zinc-400 font-sans">Web Apps & APIs</p>
                             </div>
                         </div>
 
