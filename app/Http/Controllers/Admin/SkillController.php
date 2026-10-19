@@ -12,6 +12,7 @@ class SkillController extends Controller
     public function index()
     {
         $skills = Skill::orderBy('category')->orderBy('order')->get();
+
         return Inertia::render('Admin/Skills/Index', [
             'skills' => $skills,
         ]);
@@ -50,6 +51,7 @@ class SkillController extends Controller
     public function destroy(Skill $skill)
     {
         $skill->delete();
+
         return back()->with('success', 'Skill berhasil dihapus.');
     }
 }

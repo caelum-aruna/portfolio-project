@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             'greeting' => 'Hello, I am',
             'description' => 'I build modern, responsive, and scalable web applications with the Laravel & Vue.js ecosystem, turning complex concepts into high-impact digital experiences.',
             'about_bio_1' => "I'm Ikbal, a dedicated Full Stack Developer based in Indonesia. I specialize in engineering clean, performant, and maintainable web applications that bridge intuitive design with rock-solid server architecture.",
-            'about_bio_2' => "With a strong foundation in modern PHP (Laravel), Vue 3 Composition API, Inertia.js, and relational database design, I enjoy tackling complex challenges from database optimization to smooth micro-interactions.",
+            'about_bio_2' => 'With a strong foundation in modern PHP (Laravel), Vue 3 Composition API, Inertia.js, and relational database design, I enjoy tackling complex challenges from database optimization to smooth micro-interactions.',
             'email' => 'ikbal@email.com',
             'phone' => '+62 812 3456 7890',
             'location' => 'Indonesia',

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 // Public Portfolio Routes
 Route::get('/', [PortfolioController::class, 'index'])->name('portfolio');
+Route::get('/projects', [PortfolioController::class, 'projects'])->name('portfolio.projects');
 Route::post('/contact', [PortfolioController::class, 'storeContact'])->name('portfolio.contact');
 
 // Authenticated Admin Routes

@@ -13,9 +13,15 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                zinc: {
+                    750: '#303036',
+                    850: '#1e1e22',
+                },
+            },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
-                heading: ['Syne', ...defaultTheme.fontFamily.sans],
+                heading: ['Fraunces', ...defaultTheme.fontFamily.serif],
                 mono: ['"JetBrains Mono"', ...defaultTheme.fontFamily.mono],
             },
         },

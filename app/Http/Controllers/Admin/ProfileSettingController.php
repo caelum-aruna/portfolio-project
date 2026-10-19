@@ -29,7 +29,7 @@ class ProfileSettingController extends Controller
 
         if ($request->hasFile('hero_image_file')) {
             $path = $request->file('hero_image_file')->store('profile', 'public');
-            $data['hero_image'] = '/storage/' . $path;
+            $data['hero_image'] = '/storage/'.$path;
         }
 
         foreach ($data as $key => $val) {

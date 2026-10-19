@@ -8,7 +8,6 @@ import {
     X, 
     Terminal, 
     ArrowUpRight,
-    LogIn,
     LayoutDashboard
 } from 'lucide-vue-next';
 
@@ -126,23 +125,14 @@ onUnmounted(() => {
                         <Moon v-else class="w-4 h-4 text-zinc-700" />
                     </button>
 
-                    <!-- Admin Link -->
-                    <template v-if="canLogin">
+                    <!-- Admin Dashboard Link (Only visible when authenticated) -->
+                    <template v-if="auth?.user">
                         <Link 
-                            v-if="auth?.user" 
                             :href="route('dashboard')"
                             class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors border border-zinc-200 dark:border-zinc-700"
                         >
                             <LayoutDashboard class="w-3.5 h-3.5 text-indigo-500" />
                             <span>Dashboard</span>
-                        </Link>
-                        <Link 
-                            v-else 
-                            :href="route('login')"
-                            class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
-                        >
-                            <LogIn class="w-3.5 h-3.5" />
-                            <span>Admin</span>
                         </Link>
                     </template>
 
@@ -198,20 +188,12 @@ onUnmounted(() => {
 
                     <div class="pt-3 border-t border-zinc-200 dark:border-zinc-800 flex flex-col gap-2">
                         <Link 
-                            v-if="canLogin && auth?.user" 
+                            v-if="auth?.user" 
                             :href="route('dashboard')"
                             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200"
                         >
                             <LayoutDashboard class="w-4 h-4 text-indigo-500" />
                             Admin Dashboard
-                        </Link>
-                        <Link 
-                            v-else-if="canLogin" 
-                            :href="route('login')"
-                            class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-medium border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300"
-                        >
-                            <LogIn class="w-4 h-4" />
-                            Admin Login
                         </Link>
                         <a 
                             href="#contact" 

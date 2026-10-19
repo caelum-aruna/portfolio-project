@@ -12,6 +12,7 @@ class ExperienceController extends Controller
     public function index()
     {
         $experiences = Experience::orderBy('order')->orderByDesc('id')->get();
+
         return Inertia::render('Admin/Experiences/Index', [
             'experiences' => $experiences,
         ]);
@@ -52,6 +53,7 @@ class ExperienceController extends Controller
     public function destroy(Experience $experience)
     {
         $experience->delete();
+
         return back()->with('success', 'Pengalaman berhasil dihapus.');
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\ContactMessage;
-use App\Models\Project;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -15,6 +13,13 @@ class PortfolioTest extends TestCase
     public function test_portfolio_page_can_be_rendered(): void
     {
         $response = $this->get('/');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_projects_archive_page_can_be_rendered(): void
+    {
+        $response = $this->get('/projects');
 
         $response->assertStatus(200);
     }
@@ -52,7 +57,7 @@ class PortfolioTest extends TestCase
     {
         $response = $this->get('/dashboard');
 
-        $response->assertRedirect('/login');
+        $response->assertRedirect(route('login'));
     }
 
     public function test_admin_can_access_dashboard_and_view_stats(): void

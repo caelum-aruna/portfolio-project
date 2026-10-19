@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 
@@ -14,6 +13,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::orderBy('order')->orderByDesc('id')->get();
+
         return Inertia::render('Admin/Projects/Index', [
             'projects' => $projects,
         ]);
@@ -36,14 +36,14 @@ class ProjectController extends Controller
 
         if ($request->hasFile('thumbnail_file')) {
             $path = $request->file('thumbnail_file')->store('projects', 'public');
-            $validated['thumbnail'] = '/storage/' . $path;
+            $validated['thumbnail'] = '/storage/'.$path;
         }
 
         if (is_string($validated['tech_stack'] ?? null)) {
             $validated['tech_stack'] = array_filter(array_map('trim', explode(',', $validated['tech_stack'])));
         }
 
-        $validated['slug'] = Str::slug($validated['title']) . '-' . time();
+        $validated['slug'] = Str::slug($validated['title']).'-'.time();
 
         Project::create($validated);
 
@@ -67,7 +67,7 @@ class ProjectController extends Controller
 
         if ($request->hasFile('thumbnail_file')) {
             $path = $request->file('thumbnail_file')->store('projects', 'public');
-            $validated['thumbnail'] = '/storage/' . $path;
+            $validated['thumbnail'] = '/storage/'.$path;
         }
 
         if (is_string($validated['tech_stack'] ?? null)) {
@@ -82,6 +82,7 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
+
         return back()->with('success', 'Project berhasil dihapus.');
     }
 }

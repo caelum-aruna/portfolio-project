@@ -1,11 +1,13 @@
 <script setup>
 import { ref, computed } from 'vue';
+import { Link } from '@inertiajs/vue3';
 import { 
     FolderGit2, 
     ExternalLink, 
     Github, 
     Sparkles, 
     ArrowUpRight,
+    ArrowRight,
     Eye
 } from 'lucide-vue-next';
 import ProjectModal from './ProjectModal.vue';
@@ -14,6 +16,14 @@ const props = defineProps({
     projects: {
         type: Array,
         required: true,
+    },
+    limit: {
+        type: Number,
+        default: 6,
+    },
+    showViewAll: {
+        type: Boolean,
+        default: true,
     },
 });
 
@@ -32,10 +42,11 @@ const categories = computed(() => {
 });
 
 const filteredProjects = computed(() => {
-    if (activeCategory.value === 'All') {
-        return props.projects;
-    }
-    return props.projects.filter(p => p.category === activeCategory.value);
+    const list = activeCategory.value === 'All'
+        ? props.projects
+        : props.projects.filter(p => p.category === activeCategory.value);
+
+    return props.limit ? list.slice(0, props.limit) : list;
 });
 
 const openProjectModal = (project) => {
@@ -198,6 +209,20 @@ const closeProjectModal = () => {
 
                     </div>
                 </div>
+            </div>
+
+            <!-- View All Projects CTA Banner / Link -->
+            <div v-if="showViewAll" class="mt-14 text-center">
+                <Link 
+                    :href="route('portfolio.projects')"
+                    class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-100 dark:text-zinc-900 font-heading font-bold text-sm sm:text-base shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all group"
+                >
+                    <span>View All Projects</span>
+                    <span class="px-2.5 py-0.5 rounded-full bg-white/20 dark:bg-zinc-900/10 text-xs font-mono font-bold">
+                        {{ projects.length }}
+                    </span>
+                    <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform text-indigo-400 dark:text-indigo-600" />
+                </Link>
             </div>
 
             <!-- Project Details Modal Popup -->

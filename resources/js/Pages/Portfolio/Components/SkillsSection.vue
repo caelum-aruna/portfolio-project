@@ -106,18 +106,10 @@ const getCategoryCount = (cat) => {
                             </div>
                         </div>
 
-                        <!-- Numeric Proficiency -->
-                        <span class="font-mono text-xs font-bold text-zinc-500 dark:text-zinc-400">
-                            {{ skill.proficiency }}%
+                        <!-- Active Stack Badge -->
+                        <span class="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
+                            Production
                         </span>
-                    </div>
-
-                    <!-- Solid Fill Progress Bar -->
-                    <div class="w-full h-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden relative">
-                        <div 
-                            class="h-full rounded-full bg-indigo-600 dark:bg-indigo-500 transition-all duration-700 ease-out"
-                            :style="{ width: `${skill.proficiency}%` }"
-                        ></div>
                     </div>
                 </div>
             </div>

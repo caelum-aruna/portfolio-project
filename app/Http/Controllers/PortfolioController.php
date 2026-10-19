@@ -10,21 +10,16 @@ use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class PortfolioController extends Controller
 {
     /**
      * Display public portfolio SPA.
      */
-    public function index()
+    public function index(): Response
     {
-        $settingsRaw = ProfileSetting::all();
-        $profile = [];
-        foreach ($settingsRaw as $setting) {
-            $val = json_decode($setting->value, true);
-            $profile[$setting->key] = json_last_error() === JSON_ERROR_NONE ? $val : $setting->value;
-        }
-
+        $profile = $this->getProfileData();
         $skills = Skill::orderBy('order')->orderBy('name')->get();
         $projects = Project::orderBy('order')->get();
         $experiences = Experience::orderBy('order')->get();
@@ -37,6 +32,39 @@ class PortfolioController extends Controller
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
         ]);
+    }
+
+    /**
+     * Display all projects archive page.
+     */
+    public function projects(): Response
+    {
+        $profile = $this->getProfileData();
+        $projects = Project::orderBy('order')->get();
+
+        return Inertia::render('Portfolio/Projects', [
+            'profile' => $profile,
+            'projects' => $projects,
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+        ]);
+    }
+
+    /**
+     * Retrieve parsed profile settings.
+     *
+     * @return array<string, mixed>
+     */
+    protected function getProfileData(): array
+    {
+        $settingsRaw = ProfileSetting::all();
+        $profile = [];
+        foreach ($settingsRaw as $setting) {
+            $val = json_decode($setting->value, true);
+            $profile[$setting->key] = json_last_error() === JSON_ERROR_NONE ? $val : $setting->value;
+        }
+
+        return $profile;
     }
 
     /**
