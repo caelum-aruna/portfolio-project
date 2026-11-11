@@ -57,6 +57,15 @@ jobs :
       - name: Checkoup Repository
         uses: actions/checkout@v4
 
+      - name: Setup PHP
+        uses: shivamathur/setup-php@v2
+        with: 
+          php-version: '8.5'
+          coverage: none
+
+      - name: Install Dependesi PHP
+        run: composer install --no-progress --prefer-dist
+
       - name: Setup Node JS
         uses: actions/setup-node@v4
         with: 
