@@ -57,29 +57,3 @@ jobs :
           php artisan key:generate
           php artisan migrate
           php artisan test
-  
-  # frontend-test:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkoup Repository
-  #       uses: actions/checkout@v4
-
-  #     - name: Setup PHP
-  #       uses: shivammathur/setup-php@v2
-  #       with: 
-  #         php-version: '8.5'
-  #         coverage: none
-
-  #     - name: Install Dependesi PHP
-  #       run: composer install --no-progress --prefer-dist
-
-  #     - name: Setup Node JS
-  #       uses: actions/setup-node@v4
-  #       with: 
-  #         node-version: '24'
-      
-  #     - name: Install Dependensi Node JS
-  #       run: npm install
-      
-  #     - name: Memastika code vue dan typescript dapat di compile
-        run: npm run build
