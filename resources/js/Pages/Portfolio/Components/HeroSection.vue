@@ -163,7 +163,7 @@ const copyEmail = () => {
                             <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs">
                                 <div class="flex items-center gap-1.5 bg-zinc-950/80 px-3 py-1.5 rounded-lg border border-white/10">
                                     <Sparkles class="w-3.5 h-3.5 text-amber-400" />
-                                    <span class="font-medium font-sans">Laravel & Vue 3 Architect</span>
+                                    <!-- <span class="font-medium font-sans">Laravel & Vue 3 Architect</span> -->
                                 </div>
                             </div>
                         </div>
