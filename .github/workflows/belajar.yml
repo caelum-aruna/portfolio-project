@@ -1,7 +1,6 @@
 name : Latihan CI Pertama
 
-on = [push]
-
+on: [push]
 jobs : 
   build-and-test : 
     runs on: ubuntu-latest
