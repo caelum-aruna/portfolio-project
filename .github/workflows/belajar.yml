@@ -29,21 +29,19 @@ jobs :
           php-version: '8.5'
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, pdo_mysql, bcmath, soap, intl, gd, exif, iconv
           coverage: none
-      - name: Install Dependesi PHP
-        run: composer install --no-progress --prefer-dist
 
       - name: Setup Node JS
         uses: actions/setup-node@v4
         with: 
           node-version: '24'
 
-      - name: Install Dependesi PHP
-        run: composer install --no-progress --prefer-dist
-
-      - name: Setup environment 
-        run : |
-          cp .env.example .env
-          php artisan key:generate
+      - name: Install Dependesi PHP dan JS (COMPOSER DAN NPM)
+        run: |
+          composer install --no-progress --prefer-dist
+          npm ci
+      
+      - name: Memastika code vue dan typescript dapat di compile
+        run: npm run build
       
       - name: Menjalankan PHP Unit Test
         env: 
@@ -53,14 +51,10 @@ jobs :
           DB_DATABASE: larvel_test
           DB_USERNAME: root
           DB_PASSWORD: root
-        
-      - name: Install Dependensi Node JS
-        run: npm install
-      
-      - name: Memastika code vue dan typescript dapat di compile
-        run: npm run build
 
         run : | 
+          cp .env.example .env
+          php artisan key:generate
           php artisan migrate
           php artisan test
   
