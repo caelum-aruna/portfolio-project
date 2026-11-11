@@ -1,15 +1,69 @@
-name : Latihan CI Pertama
+name : Validasi Fullstact Laravel Vue
 
-on: [push]
+on: 
+  pull_request:
+    branches:
+      - main
 jobs : 
-  build-and-test : 
+
+  backend-test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:9.0
+        env: 
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: laravel_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        whith:
+          php-version: '8.5'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, pdo_mysql, bcmath, soap, intl, gd, exif, iconv
+          coverage: none
+
+      - name: Install Dependesi PHP
+        run: composer install --no-progress --prefer-dist
+
+      - name: Setup environment 
+        run : |
+          cp .env.example .env
+          php artisan key:generate
+      
+      - name: Menjalankan PHP Unit Test
+        env: 
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: larvel_test
+          DB_USERNAME: root
+          DB_PASSWORD: root
+
+        run : | 
+          php artisan migrate
+          php artisan test
+  
+  frontend-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Mengambil kode dari repository
+      - name: Checkoup Repository
         uses: actions/checkout@v4
+
+      - name: Setup Node JS
+        uses: actions/setup-node@v4
+        with: 
+          node-version: '24'
       
-      - name: Menjalankan skrip sapaan
-        run: echo "Halo, ini adalah latihan CI pertama saya!"
+      - name: Install Dependensi Node JS
+        run: npm ci
       
-      - name: Mengecek sistem operasi runner
-        run: cat /etc/os-release
+      - name: Memastika code vue dan typescript dapat di compile
+        run: npm run build
