@@ -63,7 +63,7 @@ jobs :
           node-version: '24'
       
       - name: Install Dependensi Node JS
-        run: npm ci
+        run: npm install
       
       - name: Memastika code vue dan typescript dapat di compile
         run: npm run build
