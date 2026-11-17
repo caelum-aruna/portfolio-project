@@ -23,6 +23,14 @@ jobs :
       - name: Checkout repository
         uses: actions/checkout@v4
 
+
+      # Setup node js (Dengan caching otomatis)
+      - name: Setup Node JS
+        uses: actions/setup-node@v4
+        with: 
+          node-version: '24'
+          cache: 'npm'
+
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -30,10 +38,14 @@ jobs :
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, pdo_mysql, bcmath, soap, intl, gd, exif, iconv
           coverage: none
 
-      - name: Setup Node JS
-        uses: actions/setup-node@v4
+      # cache manual untuk php
+      - name: Caching Dependensi composer
+        uses: actions/cache@v4
         with: 
-          node-version: '24'
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hasFiles('**/composer.lock') }}
+          restore-keys: |
+                ${{ runner.os }}-composer-
 
       - name: Install Dependesi PHP dan JS (COMPOSER DAN NPM)
         run: |
