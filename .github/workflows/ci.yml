@@ -1,0 +1,108 @@
+name : CI CD Fullstact Laravel Vue
+
+on: 
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+jobs : 
+
+  web-test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:9.0
+        env: 
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: laravel_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      # Setup node js (Dengan caching otomatis)
+      - name: Setup Node JS
+        uses: actions/setup-node@v4
+        with: 
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, pdo_mysql, bcmath, soap, intl, gd, exif, iconv
+          coverage: none
+
+      # cache manual untuk php
+      - name: Caching Dependensi composer
+        uses: actions/cache@v4
+        with: 
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+                ${{ runner.os }}-composer-
+
+      - name: Install Dependesi PHP dan JS (COMPOSER DAN NPM)
+        run: |
+          composer install --no-progress --prefer-dist
+          npm ci
+      
+      - name: Memastika code vue dan typescript dapat di compile
+        run: npm run build
+      
+      - name: Menjalankan PHP Unit Test
+        env: 
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: larvel_test
+          DB_USERNAME: root
+          DB_PASSWORD: root
+
+        run : | 
+          cp .env.example .env
+          php artisan key:generate
+          php artisan migrate
+          php artisan test
+    
+
+  deploy-production:
+    name: Deploy to VPS
+    runs-on: ubuntu-latest
+    needs: web-test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Run Deployment Via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          ports: 50044
+          script: |
+            cd /var/www/portfolio
+
+            git pull origin main
+
+            composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
+
+            npm ci
+
+            npm run build
+
+            php artisan migrate --force
+
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+
